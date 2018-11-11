@@ -16,7 +16,7 @@ brokerClient.on('connect', function () {
 brokerClient.on('message', function (topic, message) {
   context = message.toString();
   console.log(context)
-  cloudClient.publishAsync(1, 1);
+  cloudClient.publishAsync(context);
 })
 
 server.on('ready', function(){

@@ -9,6 +9,7 @@
   "author": "woody",
   "license": "ISC",
   "dependencies": {
+    "gcic-mqtt-client": "^1.0.2",
     "jsonwebtoken": "^8.3.0",
     "mosca": "^2.8.3"
   }
