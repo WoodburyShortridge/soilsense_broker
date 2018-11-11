@@ -1,0 +1,15 @@
+{
+  "name": "soilsense_broker",
+  "version": "1.0.0",
+  "description": "mqtt broker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "woody",
+  "license": "ISC",
+  "dependencies": {
+    "jsonwebtoken": "^8.3.0",
+    "mosca": "^2.8.3"
+  }
+}
