@@ -4,7 +4,7 @@ var mqtt = require('mqtt');
 var cloudClient = require('./cloud.js');
 
 var settings = { port:1883 }
-var broker = 'localhost'
+var broker = '35.230.163.5'
 
 var server = new mosca.Server(settings);
 

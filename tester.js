@@ -1,5 +1,5 @@
 var mqtt = require('mqtt');
-var broker = 'localhost'
+var broker = '35.230.163.5'
 
 var client  = mqtt.connect('mqtt://' + broker);
 client.on('connect', function () {
