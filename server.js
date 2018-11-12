@@ -1,25 +1,39 @@
 var mosca = require('mosca');
 var mqtt = require('mqtt');
-
 var cloudClient = require('./cloud.js');
-
 var settings = { port:1883 }
-var broker = '35.230.163.5'
 
 var server = new mosca.Server(settings);
 
-var brokerClient  = mqtt.connect('mqtt://' + broker);
+// Accepts the connection if the username and password are valid
+var authenticate = function(client, username, password, callback) {
+  var authorized = (username === 'device_1' && password.toString() === 'soilsense_secret');
+  if (authorized) client.user = username;
+  callback(null, authorized);
+}
 
-brokerClient.on('connect', function () {
-    console.log('connected to events');
-    brokerClient.subscribe('events')
-})
-brokerClient.on('message', function (topic, message) {
-  context = message.toString();
-  console.log(context)
-  cloudClient.publishAsync(context);
-})
-
-server.on('ready', function(){
-  console.log("broker listening");
+// fired when a message is published
+server.on('published', function(packet, client) {
+  if (packet.topic === 'events') {
+    var payload = packet.payload.toString('utf8');
+    console.log('Published to events: ', payload);
+    // relay to google IoT
+    cloudClient.publishAsync(payload);
+  }
 });
+
+// fired when client subscribed
+server.on('clientConnected', function(client) {
+  console.log ('client ' + client + ' connected')
+});
+
+// fired when client subscribed
+server.on('clientDisconnected', function(client) {
+  console.log ('client ' + client + ' disconnected')
+});
+
+function setup() {
+  server.authenticate = authenticate;
+}
+
+server.on('ready', setup);

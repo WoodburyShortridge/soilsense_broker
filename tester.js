@@ -1,10 +1,15 @@
 var mqtt = require('mqtt');
-var broker = '35.230.163.5'
+var broker = 'localhost'
 
-var client  = mqtt.connect('mqtt://' + broker);
+var options = {
+    username: 'device_1',
+    password: 'soilsense_secret',
+};
+
+var client  = mqtt.connect('mqtt://' + broker, options);
 client.on('connect', function () {
   setInterval(function() {
-    client.publish('events', 'Hello soilsense google data masters, this message was sent from Woodys test mqtt device.');
+    client.publish('events', 'Hi jesper.');
     console.log('Message Sent');
   }, 5000);
 });
