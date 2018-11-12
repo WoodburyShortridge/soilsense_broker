@@ -2,15 +2,15 @@
   "name": "soilsense_broker",
   "version": "1.0.0",
   "description": "mqtt broker",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "woody",
   "license": "ISC",
   "dependencies": {
     "gcic-mqtt-client": "^1.0.2",
-    "jsonwebtoken": "^8.3.0",
     "mosca": "^2.8.3"
   }
 }

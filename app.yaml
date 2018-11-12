@@ -1,0 +1,6 @@
+env: flex
+runtime: nodejs
+
+network:
+  forwarded_ports:
+    - 1883/tcp

@@ -11,6 +11,7 @@ var server = new mosca.Server(settings);
 var brokerClient  = mqtt.connect('mqtt://' + broker);
 
 brokerClient.on('connect', function () {
+    console.log('connected to events');
     brokerClient.subscribe('events')
 })
 brokerClient.on('message', function (topic, message) {
