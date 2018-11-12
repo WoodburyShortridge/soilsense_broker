@@ -1,5 +1,4 @@
 var mosca = require('mosca');
-var mqtt = require('mqtt');
 var cloudClient = require('./cloud.js');
 var settings = { port:1883 }
 
