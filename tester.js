@@ -1,5 +1,6 @@
 var mqtt = require('mqtt');
-var broker = '35.230.163.5'
+// var broker = '35.230.163.5'
+var broker = 'localhost'
 
 var options = {
     username: 'device_1',

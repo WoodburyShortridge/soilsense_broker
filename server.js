@@ -1,12 +1,13 @@
 var mosca = require('mosca');
 var cloudClient = require('./cloud.js');
-var settings = { port:1883 }
+var settings = { port:1883 };
+var env = require('./env.json');
 
 var server = new mosca.Server(settings);
 
 // Accepts the connection if the username and password are valid
 var authenticate = function(client, username, password, callback) {
-  var authorized = (username === 'device_1' && password.toString() === 'soilsense_secret');
+  var authorized = (username === env.username && password.toString() === env.password);
   if (authorized) client.user = username;
   callback(null, authorized);
 }
